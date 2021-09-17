@@ -1,0 +1,11 @@
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.appName('PySpark DataFrame From External Files').getOrCreate()
+csv_file = spark.read.csv('Fish.csv', sep = ',', inferSchema = True, header = True)
+txt_file = spark.read.text("example.txt")
+json_file = spark.read.json("sample.json", multiLine=True)
+print(type(csv_file))
+#print(type(txt_file))
+#print(type(json_file))
+csv_file.printSchema()
+#txt_file.printSchema()
+#json_file.printSchema()
